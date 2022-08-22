@@ -10,6 +10,16 @@ Una volta che sono stati trovati articoli interessanti, creeremo una presentazio
 - poi si aggiunge la grafica
 - poi si fa la prova insieme
 
+Consigli:
+ - Trova qualcosa da integrare nella presentazione in modo tale che sia diversa dalle altre
+	- Strumenti che possono risultare più utili del solito quando si utilizzano le cose spiegate ? 
+	- Analisi di uno strumento che usiamo tutti i giorni che integra le cose spiegate magari capendo come le perfomance vengono ottimizzate ?
+	- Crea dei db sql e nosql in modo tale da utilizzare quelli per gli esempi
+		- Spiega i problemi che hai riscontrato e i vantaggi tra le due cose
+	- Esempi che si adattano ad un caso reale, ad esempio nel caso in cui: se fossi un freelancer e volessi creare un sito o un blog, quali tra i due schemi uso?
+		Oppure, se sono un'azienda relativamente importante, che metodologia uso per scegliere il db corretto nel mio caso? e nel momento in cui dovesse esserci
+		un grosso cambiamento per l'azienda?
+
 https://www.geeksforgeeks.org/difference-between-rdbms-and-dbms/
 https://www.pluralsight.com/blog/software-development/relational-vs-non-relational-databases
 https://medium.com/@mandeepkaur1/sql-vs-nosql-mysql-vs-mongodb-the-difference-6145e437cd40
@@ -20,15 +30,19 @@ https://www.ibm.com/cloud/blog/sql-vs-nosql
 https://phoenixnap.com/kb/acid-vs-base
 https://www.mongodb.com/compare/mongodb-postgresql (for differences between mysql and nosql) 
 https://stackoverflow.com/questions/18198960/practical-example-for-each-type-of-database-real-cases (use cases for dbs)
-https://ieeexplore.ieee.org/document/7887957
+https://www.youtube.com/watch?v=W2Z7fbCLSTw (all main dbs)
+https://ieeexplore.ieee.org/document/7887957 (paper)
+https://www.researchgate.net/publication/327834151_SQL_vs_NoSQL (paper)
 https://www.researchgate.net/publication/352039638_Comparative_Study_Between_the_MySQL_Relational_Database_and_the_MongoDB_NoSQL_Database
+https://softwareengineering.stackexchange.com/questions/158790/best-practices-for-nosql-database-design (good practices for nosql)
+https://www.conceptatech.com/blog/best-practices-how-to-design-a-database (good practices for sql)
 
 (why this presentation)
 - Perchè è stata fatta una presentazione proprio su questo argomento? -> uso di nosql sul primo progetto + non ho mai avuto la possibilità di approfondire questi argomenti
-- Trova qualcosa da integrare nella presentazione in modo tale che sia diversa dalle altre
 
-(types of datas that normally we used to store)
-
+(types of datas that normally we used to store today)
+https://www.businessintelligencegroup.it/olap-e-oltp-cosa-sono-e-quali-sono-le-principali-differenze/
+https://www.ibm.com/cloud/blog/olap-vs-oltp
 
 (RDBMS or MySql)
 
@@ -118,9 +132,11 @@ https://www.researchgate.net/publication/352039638_Comparative_Study_Between_the
 	- (drawbacks)
 		- There is a BASE approach, but not an ACID approach anymore
 		- Depending on type of the db selected, all the use cases cannot be achieved.
-	
+		- Joins are very difficult to be executed and they undermine perfomances
+		
 	- (NoSql use cases)
-	Realtime big data
+		- Realtime big data
+		- Gestione dei documenti di un blog o piattaforme video
 
 (Differences between MySql and NoSQL)
     NoSQL databases put a focus on scaling and creating fast queries, so on the perfomances, while MySql put a focus on reducing redudancy of datas.
