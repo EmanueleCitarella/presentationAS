@@ -1,0 +1,149 @@
+Se l'idea è fare un confronto tra db non relazionali e relazionali allora si possono cercare articoli di confronto.
+Gli articoli che mi interessano di più li invio a federica
+Una volta che sono stati trovati articoli interessanti, creeremo una presentazione ppt dove: 
+- per ogni slide metteremo il titolo
+- poi si aggiunge contenuto:
+	- si spiegano entrambi gli argomenti
+	- si trovano punti in comune e disaccordo
+	- vantaggi o svantaggi
+	- quando è più opportuno usare uno o l'altro o viceversa
+- poi si aggiunge la grafica
+- poi si fa la prova insieme
+
+https://www.geeksforgeeks.org/difference-between-rdbms-and-dbms/
+https://www.pluralsight.com/blog/software-development/relational-vs-non-relational-databases
+https://medium.com/@mandeepkaur1/sql-vs-nosql-mysql-vs-mongodb-the-difference-6145e437cd40
+https://www.mongodb.com/compare/relational-vs-non-relational-databases
+	- https://www.mongodb.com/basics/acid-transactions
+https://www.bmc.com/blogs/sql-vs-nosql/
+https://www.ibm.com/cloud/blog/sql-vs-nosql
+https://phoenixnap.com/kb/acid-vs-base
+https://www.mongodb.com/compare/mongodb-postgresql (for differences between mysql and nosql) 
+https://stackoverflow.com/questions/18198960/practical-example-for-each-type-of-database-real-cases (use cases for dbs)
+https://ieeexplore.ieee.org/document/7887957
+https://www.researchgate.net/publication/352039638_Comparative_Study_Between_the_MySQL_Relational_Database_and_the_MongoDB_NoSQL_Database
+
+(why this presentation)
+- Perchè è stata fatta una presentazione proprio su questo argomento? -> uso di nosql sul primo progetto + non ho mai avuto la possibilità di approfondire questi argomenti
+- Trova qualcosa da integrare nella presentazione in modo tale che sia diversa dalle altre
+
+(types of datas that normally we used to store)
+
+
+(RDBMS or MySql)
+
+	-(what is dbms)
+		Dbms and rdbms are used for stores data in a physical db, but dbms is a previous version of rdbms.
+	-(what is a rdbms)
+		A Relational Database Management System (RDBMS) or SQL database, è una raccolta di dati in cui sussistono delle relazioni tra i dati
+		esistenti. In fact, it stores data in tables and rows also referred to as records.
+		-(how relations are made)
+		To make this relations work, a relational database links information from multiple tables through the use of “keys.” where a key is a unique identifier 
+		which can be assigned to a row of data contained within a table. 
+			- (PK)
+		This unique identifier, called a “primary key,” can then be included in a record located in another table when that record has a relationship to 
+		the primary record in the main table. 
+			- (FK)
+		When this unique primary key is added to a record in another table, it is called a “foreign key” in the associated table. 
+		The connection between the primary and foreign key then creates the “relationship” between records contained across multiple tables.
+	-(immagine di una tabella in cui si mostrano pk e fk)
+		This shows also the ref. integrity, but it's something that will see better later.
+		
+	-(why we use rdbms? to query it and ask for informations)
+		Querying the data in a relational database management system is done by using Structured Querying Language (SQL), which is a language designed 
+		for managing the data housed in a relational database.
+		We create queries by using the SQL, used for managing data in relational db. 
+			-(immagine di esempio di una query)
+		
+	- (advantages)
+		- The first one (that is also a caracteristic ) is the “referential integrity.”  
+			- Referential integrity refers to the accuracy and consistency of data, this data integrity is achieved by using these primary and foreign keys. 
+			- We can create constraints -> Constraints are the rules that enforce the data’s accuracy by preventing a related record from being deleted without 
+			first deleting the primary record in the main table. (cascade delete for ex.)
+		- Normalization, The process of normalization is used to avoid redudancy of datas in tables. This, in turn, reduces storage costs and increase the processing speed.
+		- Relational databases also provide functionality called “indexing.”  A database index is a data structure which improves the speed of data retrieval. Indexes are commonly added to data fields that are routinely used to query and join tables. In the above SQL statements EmployeeId and CompanyId would be candidates for this type of optimization.
+		- (ACID, Atomicity, Consistency, Isolation, and Durability) is a standard that guarantees the reliability of database transactions after running a group of operations.		
+			The general principle is if one change fails, the whole transaction will fail, and the database will remain 
+			in the state it was in before the transaction was attempted.
+			We tell the database we’re doing a transaction, and it keeps track of every update that it makes along the way. 
+			If the connection breaks before the transaction is complete, or if any command in the transaction fails, then the database 
+			rolls back (undoes) all of the changes it had written in the course of the transaction.
+	- (drawbacks)
+		- Le perfomance sono nelle mani dello sviluppatore e nella sua bravura di evitare dati che non vengano ripetuti, nel momento in cui si hanno pochi dati le
+			perfomance ovviamente non vengono intaccate, bisogna però verificare il tutto quando si hanno delle grandi quantità di dati.
+		- Complexity when the amount of relationship, datas etc.. increases a lot into the schema
+		- Flexibility is not so much present, despite we have the possibility to define a schema. So making changes to the data structure is 
+			a complex work, but at the same time can be see as something good.
+		
+	- (when sql is used by developers)
+		Sql is used for db system design.
+		This means that if you're writing a new application, with a relational db at its core, then will be used a lot
+		but at the same time, after you finished writing that application, you need to populate the db with datas to test the perfomances.
+		
+	- (MySql use cases)
+	A shop for example
+		
+(NRDBMS)
+	NoSql db were created in response to the limitations of traditional rdbms.
+	
+	-(what is a nrdbms)
+		The non-relational database, or NoSQL database, is also a physical db with the main purpose of store datas.
+	-(main difference from rdbms)
+		However, unlike the relational database, there is no table model unlike sql, instead, 
+		the non-relational database uses a storage model optimized for specific requirements of the type of data being stored.
+		This means that the insertion of datas is different by the MySql, in fact it will insert the object without creating any relationship.
+		
+	-(types of nrdbms)
+		There are four popular non-relational types: document data store, column-oriented database, key-value store and graph database.  
+			(image of document data store)
+			- A document data store manages a set of named string fields and object data values in an entity referred to as a 
+				“document” typically stored in the form of JSON documents, which can be encoded in a variety of ways, including XML, YAML, JSON, BSON
+				or as plain text. The fields within documents are exposed, allowing an application to query and filter data using field values.
+				Also, in this case the view is really simple.
+			- Key-Value store, this is the least complicated of the NoSQL databases and, as the name would indicate, the key-value store is simply a 
+			collection of key-value pairs contained within an object.
+			- Graph store, is the most complex non-relational database type.  
+			It’s designed to efficiently store relations between entities. 
+			When data is greatly interconnected, such as purchasing and manufacturing systems or referencing catalogs, graph databases are a good solution.
+			- Wide-column store, A columnar data store organizes data into columns, which is conceptually similar to the relational database. 
+			The true advantage of a column-family database is in its denormalized approach to structuring sparse data, 
+			which comes from its column-oriented approach to storing data.
+			However, compared to relational databases, wide-column databases are much slower when handling transactions. 
+			
+	- (advantages)
+		- Store large amounts of data at high speed with a scale-out architecture (horizontal scaling).
+		- Flexibility to store different type of datas without the necessity of a schema, so unstructured, semi and structured data
+		- Update of data is easier than dbms
+		- BASE approach despite ACID where BASE stays for: basically available soft state eventually consistent, this create the horizontal scaling
+	- (drawbacks)
+		- There is a BASE approach, but not an ACID approach anymore
+		- Depending on type of the db selected, all the use cases cannot be achieved.
+	
+	- (NoSql use cases)
+	Realtime big data
+
+(Differences between MySql and NoSQL)
+    NoSQL databases put a focus on scaling and creating fast queries, so on the perfomances, while MySql put a focus on reducing redudancy of datas.
+		- MySql is vertically scalable (you can improve load on a singe server increasing hardware components), NoSQL are horizontally scalable.
+			This means that in sql db can be expensive, while in nosql db this can be achieved in an easy way.
+		- ACID (consistency) vs BASE (high availability)
+		- How datas are inserted and managed, the data insertions are different between the two db, therefore sql allows to store a 
+			data that must be transformed into a table
+			and only after that it can be loaded inside db, while with nosql fewer transformations are required.
+		- Structure can be change while is been creating using nosql, this can not happen using sql
+	
+(When to use one and when to use the other)
+	- (MySql)
+		The challenge of using a relational database is the need to define its structure in advance. 
+		Is a good choice when we are working with datas that can have a relations between them, and if they can be predictable in terms of
+		structure, size, frequency of access etc...
+		
+	- (NoSQL)
+		NoSql is good when fast availability is a necessity. Also, one of good advantage is the necessity to scale of changing requirements.
+		NoSQL is also good when working with flexible data models that don't fit into a unique relational model.
+		NoSQL db still mantains some consistent advantages.
+		In general, the more extensive the dataset the more likely that NoSQL is a better choice.
+		Also, is useful if the db must be developed in a much faster way at the start of the project
+		If you are at the beginning of a development project and are seeking to figure out your needs and data model by using
+		an agile development process, MongoDB will shine because developers can reshape the data on their own, when they need to. 
+	
