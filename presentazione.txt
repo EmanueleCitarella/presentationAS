@@ -39,13 +39,27 @@ https://www.conceptatech.com/blog/best-practices-how-to-design-a-database (good 
 
 (why this presentation)
 - Perchè è stata fatta una presentazione proprio su questo argomento? -> uso di nosql sul primo progetto + non ho mai avuto la possibilità di approfondire questi argomenti
+L'idea della presentazione nasce principalmente dal fatto di non aver mai approfondito realmente i db non relazionali rispetto
+ai db relazionali durante il percorso di studi, nonostante il primo argomento sia da parecchio tempo in forte crescita.
+Inoltre, è anche un'idea nata dall'utilizzo di uno di questi strumenti all'interno del primo vero progetto con cui ho avuto
+a che fare durante il lavoro.
 
 (types of datas that normally we used to store today)
 https://www.businessintelligencegroup.it/olap-e-oltp-cosa-sono-e-quali-sono-le-principali-differenze/
 https://www.ibm.com/cloud/blog/olap-vs-oltp
+Prima di tutto si parte dai tipi di dati che normalmente al giorno d'oggi andiamo a salvare in modo da capire a cosa serve
+realmente un db.
+I dati sono di tue tipi, categorizzabili in : 
+	- Operational, sono dei dati utilizzati per operazioni in real time e salvati in sistemi OLTP 
+	- Analytical, dati che invece vengono usati per operazioni di data mining, salvati in sistemi OLAP
+
+(a cosa serve quindi un db)
+Ci serviamo di un db per andare a salvare questi dati in uno store fisico, dati che fanno riferimento alla azienda stessa
+o ai suoi clienti, alle loro operazioni e per scoprirne di nuovi.
+Si entra quindi nell'analisi dei database esistenti attualmente che realizzano questo obiettivo, ognuno con le sue 
+peculiarità e non.
 
 (RDBMS or MySql)
-
 	-(what is dbms)
 		Dbms and rdbms are used for stores data in a physical db, but dbms is a previous version of rdbms.
 	-(what is a rdbms)
@@ -60,6 +74,15 @@ https://www.ibm.com/cloud/blog/olap-vs-oltp
 			- (FK)
 		When this unique primary key is added to a record in another table, it is called a “foreign key” in the associated table. 
 		The connection between the primary and foreign key then creates the “relationship” between records contained across multiple tables.
+		
+		Un database relazionale è una raccolta di dati all'interno del quale sussistono delle relazioni tra 
+		i dati presenti al suo interno.
+		Questo avviene attraverso il salvataggio dei dati all'interno di tabelle, organizzandole in righe e colonne e 
+		riferendoci ad ogni istanza di una tabella con il nome di "record".
+		
+		Per rendere possibile il modello relazionale, alcune delle informazioni delle tabelle sono collegate tra loro 
+		attraverso l'utilizzo di chiavi.
+		
 	-(immagine di una tabella in cui si mostrano pk e fk)
 		This shows also the ref. integrity, but it's something that will see better later.
 		
@@ -70,7 +93,7 @@ https://www.ibm.com/cloud/blog/olap-vs-oltp
 			-(immagine di esempio di una query)
 		
 	- (advantages)
-		- The first one (that is also a caracteristic ) is the “referential integrity.”  
+		- The first one (that is also a characteristic ) is the “referential integrity.”  
 			- Referential integrity refers to the accuracy and consistency of data, this data integrity is achieved by using these primary and foreign keys. 
 			- We can create constraints -> Constraints are the rules that enforce the data’s accuracy by preventing a related record from being deleted without 
 			first deleting the primary record in the main table. (cascade delete for ex.)
@@ -86,26 +109,47 @@ https://www.ibm.com/cloud/blog/olap-vs-oltp
 		- Le perfomance sono nelle mani dello sviluppatore e nella sua bravura di evitare dati che non vengano ripetuti, nel momento in cui si hanno pochi dati le
 			perfomance ovviamente non vengono intaccate, bisogna però verificare il tutto quando si hanno delle grandi quantità di dati.
 		- Complexity when the amount of relationship, datas etc.. increases a lot into the schema
-		- Flexibility is not so much present, despite we have the possibility to define a schema. So making changes to the data structure is 
-			a complex work, but at the same time can be see as something good.
+		- Flexibility is not so much present, despite we have the possibility to define a schema.
+			So making changes to the data structure is a complex work, but at the same time 
+			can be see as something good.
 		
 	- (when sql is used by developers)
-		Sql is used for db system design.
+		Sql is used for db system design e non solo per l'interrogazione dei dati.
+		Infatti egli al suo interno comprende diversi sottoinsiemi.
 		This means that if you're writing a new application, with a relational db at its core, then will be used a lot
 		but at the same time, after you finished writing that application, you need to populate the db with datas to test the perfomances.
+		Alcuni dei sottoinsiemi di sql sono:
+			-	DDL, crea o modifica schemi di db
+			-	DML, modifica i dati memorizzati
+			-	DQL, li interroga
 		
 	- (MySql use cases)
-	A shop for example
+		Sistemi in cui si hanno degli schemi che sono rigidi o poco flessibili:
+			-	per la finanza o la contabilità ad esempio,
+			-	inventario di uno shop
+			-	
 		
 (NRDBMS)
 	NoSql db were created in response to the limitations of traditional rdbms.
+	I database non relazionali sono stati realizzati in seguito alle limitazioni presentate dai db relazionali 
+	relative in particolar modo alla scarsa scalabilità dei sistemi relazionali.
+	NoSQL quindi non sta per "no sql" ma "not only sql", significando di voler andare oltre il concetto di
+	relazionare i dati tra loro e puntando a salvarli in modo "strutturato".
+	
+	(TEOREMA CAP...? https://it.wikipedia.org/wiki/Teorema_CAP)
 	
 	-(what is a nrdbms)
 		The non-relational database, or NoSQL database, is also a physical db with the main purpose of store datas.
+		Allo stesso modo, un nrdbms ha lo stesso scopo di salvare dati come per il rdbms, con la differenza però che
+		non viene più utilizzato nessun tipo di relazione tra i dati, perdendo quindi il concetto di integrità referenziale.
 	-(main difference from rdbms)
 		However, unlike the relational database, there is no table model unlike sql, instead, 
 		the non-relational database uses a storage model optimized for specific requirements of the type of data being stored.
 		This means that the insertion of datas is different by the MySql, in fact it will insert the object without creating any relationship.
+		
+		La differenza principale è questa quindi: non si salvano più quindi i dati all'interno di tabelle ma bensì si utilizzano
+		un tipo di modello di storage specifico in base al tipo di dato che vogliamo salvare.
+		Come detto prima, questo significa perdere del tutto (o quasi) relazione tra i dati.
 		
 	-(types of nrdbms)
 		There are four popular non-relational types: document data store, column-oriented database, key-value store and graph database.  
@@ -113,7 +157,7 @@ https://www.ibm.com/cloud/blog/olap-vs-oltp
 			- A document data store manages a set of named string fields and object data values in an entity referred to as a 
 				“document” typically stored in the form of JSON documents, which can be encoded in a variety of ways, including XML, YAML, JSON, BSON
 				or as plain text. The fields within documents are exposed, allowing an application to query and filter data using field values.
-				Also, in this case the view is really simple.
+				Also, in this case the visualization for the user is really simple.
 			- Key-Value store, this is the least complicated of the NoSQL databases and, as the name would indicate, the key-value store is simply a 
 			collection of key-value pairs contained within an object.
 			- Graph store, is the most complex non-relational database type.  
@@ -124,6 +168,13 @@ https://www.ibm.com/cloud/blog/olap-vs-oltp
 			which comes from its column-oriented approach to storing data.
 			However, compared to relational databases, wide-column databases are much slower when handling transactions. 
 			
+			Proprio per questo motivo di non avere più a disposizione un unico modello di storage predefinito 
+			come avveniva per le tabelle con i modelli relazioni, adesso ne abbiamo invece a disposizione diversi, tra i quali:
+				- Document data store, in cui si salvano dei dati come fossero in un formato json.
+				- KeyValue store, una collezione di coppie chiave valore contenute all'interno di un oggetto
+				- Graph store,
+				- Widecolumn, 		
+				
 	- (advantages)
 		- Store large amounts of data at high speed with a scale-out architecture (horizontal scaling).
 		- Flexibility to store different type of datas without the necessity of a schema, so unstructured, semi and structured data
@@ -135,8 +186,8 @@ https://www.ibm.com/cloud/blog/olap-vs-oltp
 		- Joins are very difficult to be executed and they undermine perfomances
 		
 	- (NoSql use cases)
-		- Realtime big data
-		- Gestione dei documenti di un blog o piattaforme video
+		- Realtime analysis
+		- Applicazioni iot
 
 (Differences between MySql and NoSQL)
     NoSQL databases put a focus on scaling and creating fast queries, so on the perfomances, while MySql put a focus on reducing redudancy of datas.
