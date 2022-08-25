@@ -60,14 +60,46 @@ Si entra quindi nell'analisi dei database esistenti attualmente che realizzano q
 peculiarità e non.
 
 (RDBMS or MySql)
-	-(what is dbms)
-		Dbms and rdbms are used for stores data in a physical db, but dbms is a previous version of rdbms.
+	-(what is a dbms)
+		Un DBMS è un sistema software in grado di gestire diverse collezioni di dati, che risultano essere grandi,
+		condivise tra più utenti contemporaneamente, infatti gli utenti devono avere la possibilità di
+		accedervi in qualsiasi momento alle informazioni di loro interesse, e persistenti. 
+		DBMS sono stati creati con l'obiettivo di creare ed estendere le funzionalità di un semplice file system,
+		permettendo principalmente di condividere uno stesso dato o più dati tra diversi utenti.
+		
+		"Avendo definito il concetto di DBMS, per portarci allo step successivo e arrivare ai RDBMS, è necessario
+		analizzare la definizione di modello di dati."
+		
+	-(what is a data model)
+		Un modello di dati è una combinazione di construtti utilizzati per organizzare i dati.
+		Uno dei modelli più utilizzati attualmente che andremo ad analizzare è il modello di dati relazionale,
+		attraverso il quale è possibile realizzare per l'appunto delle relazioni tra i dati.
+		Una relazione è rappresentata attraverso delle tabelle, al cui interno le righe rappresentano 
+		dei record o singole istanze, e le colonne corrispondono invece ai campi del record stesso.
+	
+	-(caratteristiche modello relazionale)
+		Il modello relazionale si basa su due concetti principali, ossia sulle tabelle e sulle relazioni.
+		Infatti il salvataggio dei dati avviene all'interno di tabelle, organizzandole in righe, all’interno delle 
+		quali avremo delle istanze di un dato chiamate record, e colonne che rappresentano invece 
+		i campi del record stesso.
+		Per realizzare le relazioni invece, alcune delle informazioni presente nelle tabelle 
+		sono collegate tra loro attraverso l’ausilio di chiavi.
+		Queste due entità sussistono all’interno di uno schema, ossia una parte normalmente 
+		statica e quindi in teoria non soggetta a cambiamenti.
+
+		"Avendo definito ora il concetto di data model e dbms, possiamo unire queste due conoscenze per arrivare al
+		primo argomento che verrà affrontato."
+		
 	-(what is a rdbms)
-		A Relational Database Management System (RDBMS) or SQL database, è una raccolta di dati in cui sussistono delle relazioni tra i dati
-		esistenti. In fact, it stores data in tables and rows also referred to as records.
-		-(how relations are made)
-		To make this relations work, a relational database links information from multiple tables through the use of “keys.” where a key is a unique identifier 
-		which can be assigned to a row of data contained within a table. 
+		Un database relazionale è una raccolta di dati all'interno del quale sussistono delle relazioni tra 
+		i dati presenti al suo interno.
+		Quindi possiamo definirlo come una versione successiva di un dbms standard che ha 
+		la peculiarità di utilizzare un data model predefinito per garantire specifiche caratteristiche.
+
+	-(how relations are made)
+		To make this relations work, a relational database links information from multiple tables through the use
+		of “keys.” where a key is a unique identifier which can be assigned to a row of data 
+		contained within a table. 
 			- (PK)
 		This unique identifier, called a “primary key,” can then be included in a record located in another table when that record has a relationship to 
 		the primary record in the main table. 
@@ -75,22 +107,20 @@ peculiarità e non.
 		When this unique primary key is added to a record in another table, it is called a “foreign key” in the associated table. 
 		The connection between the primary and foreign key then creates the “relationship” between records contained across multiple tables.
 		
-		Un database relazionale è una raccolta di dati all'interno del quale sussistono delle relazioni tra 
-		i dati presenti al suo interno.
-		Questo avviene attraverso il salvataggio dei dati all'interno di tabelle, organizzandole in righe e colonne e 
-		riferendoci ad ogni istanza di una tabella con il nome di "record".
-		
-		Per rendere possibile il modello relazionale, alcune delle informazioni delle tabelle sono collegate tra loro 
-		attraverso l'utilizzo di chiavi.
-		
-	-(immagine di una tabella in cui si mostrano pk e fk)
-		This shows also the ref. integrity, but it's something that will see better later.
-		
-	-(why we use rdbms? to query it and ask for informations)
-		Querying the data in a relational database management system is done by using Structured Querying Language (SQL), which is a language designed 
-		for managing the data housed in a relational database.
+	-(what is sql?)
+		Querying the data in a relational database management system is done by using Structured Querying Language 
+		(SQL), which is a language designed for managing the data housed in a relational database.
 		We create queries by using the SQL, used for managing data in relational db. 
-			-(immagine di esempio di una query)
+	
+	- (when sql is used by developers)
+		Sql is used for db system design e non solo per l'interrogazione dei dati.
+		Infatti egli al suo interno comprende diversi sottoinsiemi.
+		This means that if you're writing a new application, with a relational db at its core, then will be used a lot
+		but at the same time, after you finished writing that application, you need to populate the db with datas to test the perfomances.
+		Alcuni dei sottoinsiemi di sql sono:
+			-	DDL, crea o modifica schemi di db
+			-	DML, modifica i dati memorizzati
+			-	DQL, li interroga
 		
 	- (advantages)
 		- The first one (that is also a characteristic ) is the “referential integrity.”  
@@ -113,21 +143,10 @@ peculiarità e non.
 			So making changes to the data structure is a complex work, but at the same time 
 			can be see as something good.
 		
-	- (when sql is used by developers)
-		Sql is used for db system design e non solo per l'interrogazione dei dati.
-		Infatti egli al suo interno comprende diversi sottoinsiemi.
-		This means that if you're writing a new application, with a relational db at its core, then will be used a lot
-		but at the same time, after you finished writing that application, you need to populate the db with datas to test the perfomances.
-		Alcuni dei sottoinsiemi di sql sono:
-			-	DDL, crea o modifica schemi di db
-			-	DML, modifica i dati memorizzati
-			-	DQL, li interroga
-		
 	- (MySql use cases)
 		Sistemi in cui si hanno degli schemi che sono rigidi o poco flessibili:
 			-	per la finanza o la contabilità ad esempio,
 			-	inventario di uno shop
-			-	
 		
 (NRDBMS)
 	NoSql db were created in response to the limitations of traditional rdbms.
@@ -135,8 +154,6 @@ peculiarità e non.
 	relative in particolar modo alla scarsa scalabilità dei sistemi relazionali.
 	NoSQL quindi non sta per "no sql" ma "not only sql", significando di voler andare oltre il concetto di
 	relazionare i dati tra loro e puntando a salvarli in modo "strutturato".
-	
-	(TEOREMA CAP...? https://it.wikipedia.org/wiki/Teorema_CAP)
 	
 	-(what is a nrdbms)
 		The non-relational database, or NoSQL database, is also a physical db with the main purpose of store datas.
@@ -147,8 +164,8 @@ peculiarità e non.
 		the non-relational database uses a storage model optimized for specific requirements of the type of data being stored.
 		This means that the insertion of datas is different by the MySql, in fact it will insert the object without creating any relationship.
 		
-		La differenza principale è questa quindi: non si salvano più quindi i dati all'interno di tabelle ma bensì si utilizzano
-		un tipo di modello di storage specifico in base al tipo di dato che vogliamo salvare.
+		La differenza principale è quindi questa: non si salvano più quindi i dati all'interno di tabelle ma bensì 
+		si utilizzano diversi tipi di modello di storage specifici in base al tipo di dato che vogliamo salvare.
 		Come detto prima, questo significa perdere del tutto (o quasi) relazione tra i dati.
 		
 	-(types of nrdbms)
@@ -214,3 +231,4 @@ peculiarità e non.
 		If you are at the beginning of a development project and are seeking to figure out your needs and data model by using
 		an agile development process, MongoDB will shine because developers can reshape the data on their own, when they need to. 
 	
+- (confronto di performance tra i due db)
