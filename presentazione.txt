@@ -87,14 +87,16 @@ peculiarità e non.
 		dei record o singole istanze, e le colonne corrispondono invece ai campi del record stesso.
 	
 	-(caratteristiche modello relazionale)
-		Il modello relazionale si basa su due concetti principali, ossia sulle tabelle e sulle relazioni.
-		Infatti il salvataggio dei dati avviene all'interno di tabelle, organizzandole in righe, all’interno delle 
-		quali avremo delle istanze di un dato chiamate record, e colonne che rappresentano invece 
-		i campi del record stesso.
-		Per realizzare le relazioni invece, alcune delle informazioni presente nelle tabelle 
-		sono collegate tra loro attraverso l’ausilio di chiavi.
-		Queste due entità sussistono all’interno di uno schema, ossia una parte normalmente 
-		statica e quindi in teoria non soggetta a cambiamenti.
+		Il modello relazionale si basa su due concetti principali e strettamente legati tra loro,
+		ossia sulle tabelle e sulle relazioni.
+		Il concetto di relazione è formale, in quanto proveniente dalla teoria degli insiemi.
+		Infatti una relazione la possiamo estrapolare da un sottoinsieme del prodotto cartesiano
+		di A x B.
+		Le tabelle sono invece usate per rappresentare graficamente il prodotto
+		cartesiano e la relazione formale tra i due insiemi.
+		Quindi relazioni e tabelle vengono utilizzate per rappresentare
+		i dati all´interno di un`applicazione, ed entrambe sussistono 
+		all’interno dello schema.
 
 		"Avendo definito ora il concetto di data model e dbms, possiamo unire queste due conoscenze per arrivare al
 		primo argomento che verrà affrontato."
@@ -115,21 +117,6 @@ peculiarità e non.
 			- (FK)
 		When this unique primary key is added to a record in another table, it is called a “foreign key” in the associated table. 
 		The connection between the primary and foreign key then creates the “relationship” between records contained across multiple tables.
-		
-	-(cos'è sql?)
-		Querying the data in a relational database management system is done by using Structured Querying Language 
-		(SQL), which is a language designed for managing the data housed in a relational database.
-		We create queries by using the SQL, used for managing data in relational db. 
-	
-	- (quando sql viene utilizzato dagli sviluppatori?)
-		Sql is used for db system design e non solo per l'interrogazione dei dati.
-		Infatti egli al suo interno comprende diversi sottoinsiemi.
-		This means that if you're writing a new application, with a relational db at its core, then will be used a lot
-		but at the same time, after you finished writing that application, you need to populate the db with datas to test the perfomances.
-		Alcuni dei sottoinsiemi di sql sono:
-			-	DDL, crea o modifica schemi di db
-			-	DML, modifica i dati memorizzati
-			-	DQL, li interroga
 		
 	- (vantaggi)
 		- The first one (that is also a characteristic ) is the “referential integrity.”  
@@ -180,7 +167,8 @@ peculiarità e non.
 	-(tipi di non-rdbms)
 		There are four popular non-relational types: document data store, column-oriented database, key-value store and graph database.  
 			(image of document data store)
-			- A document data store manages a set of named string fields and object data values in an entity referred to as a 
+			- Document Data: MongoDB
+				A document data store manages a set of named string fields and object data values in an entity referred to as a 
 				“document” typically stored in the form of JSON documents, which can be encoded in a variety of ways, including XML, YAML, JSON, BSON
 				or as plain text. The fields within documents are exposed, allowing an application to query and filter data using field values.
 				Also, in this case the visualization for the user is really simple.
@@ -193,7 +181,7 @@ peculiarità e non.
 			The true advantage of a column-family database is in its denormalized approach to structuring sparse data, 
 			which comes from its column-oriented approach to storing data.
 			However, compared to relational databases, wide-column databases are much slower when handling transactions. 	
-				
+			
 	- (vantaggi)
 		- Store large amounts of data at high speed with a scale-out architecture (horizontal scaling).
 		- Flexibility to store different type of datas without the necessity of a schema, so unstructured, semi and structured data
